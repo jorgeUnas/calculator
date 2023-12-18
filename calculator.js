@@ -18,6 +18,7 @@ function allClear(){
     const result = document.querySelector('#result');
      result.value = 0;
      num1 = '';
+     num2 = '';
 }
 /* input the numbers 
 function input(n){
@@ -28,8 +29,9 @@ function input(n){
 //operands and operator
 let num1 = '';
 let num2 = '';
+let resultValue = '';
 let operator = '';
-let inputValue = '';
+
 
 
 function operate(operator){
@@ -37,15 +39,22 @@ function operate(operator){
    switch (operator) {
        case '+':
            const result = document.querySelector('#result');
-            if(num2 == ''){
-                num2 = num1
-                result.value = num2;
-                num1 = '';
-            }else{
-                 result.value = sum(num1, num2);
-                 num2 = sum(num1, num2);
+           if(num2 == ''){
+               num2 = num1;
+               
+               num1 = '';
+               result.value = num2;
+               
+           }else{
+           const result = document.querySelector('#result');
+           num2 = sum(num1, num2);
+           result.value = num2;
+           num1 = '';
+           
+           //num1 = '';
+           }
                  
-            }
+                 
             
            
        case '-':
