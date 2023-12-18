@@ -4,13 +4,13 @@ function sum(num1, num2){
     return parseFloat(num1) + parseFloat(num2);
 }
 function substr(num1, num2){
-    return parseFloat(num1) - parseFloat(num2);
+    return parseFloat(num2) - parseFloat(num1);
 }
 function multiply(num1, num2){
     return parseFloat(num1) * parseFloat(num2);
 }
 function divide(num1, num2){
-    return parseFloat(num1) / parseFloat(num2);
+    return parseFloat(num2) / parseFloat(num1);
 }
 
 // ac button
@@ -19,12 +19,9 @@ function allClear(){
      result.value = 0;
      num1 = '';
      num2 = '';
+    //resultValue = '';
 }
-/* input the numbers 
-function input(n){
-    display(n)
-}
-*/
+
 
 //operands and operator
 let num1 = '';
@@ -32,51 +29,106 @@ let num2 = '';
 let resultValue = '';
 let operator = '';
 
+function operate(symbol){
+    operator = symbol;
+    operation()
+    console.log(operator);
+}
 
-
-function operate(operator){
-    
+function operation(){
+    let result = document.querySelector('#result');
    switch (operator) {
        case '+':
-           const result = document.querySelector('#result');
+           
+           if(num2 == ''){
+               num2 = parseFloat(num1);
+               num1 = 0;
+               
+               console.log('num1:'+ num1);
+               console.log('num2:'+ num2);
+               result.value = `${num2}+`;
+           }else{
+               num2 = sum(parseFloat(num1), num2);
+               num1 = 0;
+                console.log('num1:'+ num1);
+                console.log('num2:'+ num2);
+                result.value = `${num2}+`;
+           }
+             break;
+       case '-':
            if(num2 == ''){
                num2 = num1;
-               
-               num1 = '';
-               result.value = num2;
-               
+               num1 = 0;
+               result.value = `${num2}-`;
+               console.log('num1:'+ num1);
+                console.log('num2:'+ num2);
            }else{
-           const result = document.querySelector('#result');
-           num2 = sum(num1, num2);
-           result.value = num2;
-           num1 = '';
-           
-           //num1 = '';
+               equals();
+               num2 = substr(num1, num2);
+               num1 = 0;
+                result.value = `${num2}-`;
+                console.log('num1:'+ num1);
+                console.log('num2:'+ num2);
            }
-                 
-                 
-            
-           
-       case '-':
-           return substr(num1, num2);
+           break;
         case '*':
-           return multiply(num1, num2);
+           if(num2 == ''){
+               num2 = num1;
+               num1 = 0;
+               result.value = `${num2}*`;
+           }else{
+               num2 = multiply(num1, num2);
+               num1 = 0;
+                result.value = `${num2}*`;
+           }
+           break;
         case '/':
-           return divide(num1, num2);
+           if(num2 == ''){
+               num2 = num1;
+               num1 = 0;
+               result.value = `${num2}/`;
+           }else{
+               num2 = divide(num1, num2);
+               num1 = 0;
+                result.value = `${num2}/`;
+           }
+           break;
    }
+
 } 
+
 
 // Display function
  function input(n){
-     const result = document.querySelector('#result');
+     let result = document.querySelector('#result');
      if(result.value == 0){
+         
           result.value = n;
      }else{
+         
          result.value += n;
+         
      }
+     num1 += n;
+     //num1 = parseFloat(n);
+     console.log(num1);
     
-     num1 += parseFloat(n);
-    //console.log(inputValue);
+ }
+ 
+ 
+ 
+ function equals(){
+     operation();
+     /*const result = document.querySelector('#result');
+     resultValue = sum(num1, num2);
+     result.value = resultValue;
+     num2 = resultValue;
+     num1 = 0;
+     
+     */
+    /*let resultante = document.querySelector('#resultante');
+    resultante.textContent = resultValue;
+    */
  }
 
 
