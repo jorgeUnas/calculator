@@ -24,7 +24,7 @@ function allClear(){
 
 
 //operands and operator
-let num1 = '';
+let num1 = 0;
 let num2 = '';
 let resultValue = '';
 let operator = '';
@@ -41,18 +41,18 @@ function operation(){
        case '+':
            
            if(num2 == ''){
-               num2 = parseFloat(num1);
-               num1 = 0;
+               num2 = num1;
+              num1 = 0;
                
                console.log('num1:'+ num1);
                console.log('num2:'+ num2);
-               result.value = `${num2}+`;
+               result.value = `${num2}`;
            }else{
-               num2 = sum(parseFloat(num1), num2);
+               num2 = sum(num1, num2);
                num1 = 0;
                 console.log('num1:'+ num1);
                 console.log('num2:'+ num2);
-                result.value = `${num2}+`;
+                result.value = `${num2}`;
            }
              break;
        case '-':
@@ -101,7 +101,7 @@ function operation(){
 // Display function
  function input(n){
      let result = document.querySelector('#result');
-     if(result.value == 0){
+     if(num1 == 0){
          
           result.value = n;
      }else{
@@ -109,7 +109,7 @@ function operation(){
          result.value += n;
          
      }
-     num1 += n;
+     num1 = result.value;
      //num1 = parseFloat(n);
      console.log(num1);
     
