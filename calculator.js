@@ -30,9 +30,10 @@ let resultValue = '';
 let operator = '';
 
 function operate(symbol){
-    operator = symbol;
     operation()
-    console.log(operator);
+    operator = symbol;
+    
+    //console.log(operator);
 }
 
 function operation(){
@@ -41,32 +42,36 @@ function operation(){
        case '+':
            
            if(num2 == ''){
-               num2 = num1;
+              num2 = num1;
+              resultValue = `${num2} +`;
               num1 = 0;
                
                console.log('num1:'+ num1);
                console.log('num2:'+ num2);
-               result.value = `${num2}`;
+               result.value = num2;
            }else{
+               
                num2 = sum(num1, num2);
+               resultValue = `${num2} + ${num1}`;
+               result.value = num2;
                num1 = 0;
                 console.log('num1:'+ num1);
                 console.log('num2:'+ num2);
-                result.value = `${num2}`;
+                
+                
            }
              break;
        case '-':
            if(num2 == ''){
                num2 = num1;
                num1 = 0;
-               result.value = `${num2}-`;
+               result.value = `${num2}`;
                console.log('num1:'+ num1);
                 console.log('num2:'+ num2);
            }else{
-               equals();
                num2 = substr(num1, num2);
                num1 = 0;
-                result.value = `${num2}-`;
+                result.value = `${num2}`;
                 console.log('num1:'+ num1);
                 console.log('num2:'+ num2);
            }
@@ -75,11 +80,11 @@ function operation(){
            if(num2 == ''){
                num2 = num1;
                num1 = 0;
-               result.value = `${num2}*`;
+               result.value = `${num2}`;
            }else{
                num2 = multiply(num1, num2);
                num1 = 0;
-                result.value = `${num2}*`;
+                result.value = `${num2}`;
            }
            break;
         case '/':
@@ -93,6 +98,7 @@ function operation(){
                 result.value = `${num2}/`;
            }
            break;
+        
    }
 
 } 
@@ -102,8 +108,8 @@ function operation(){
  function input(n){
      let result = document.querySelector('#result');
      if(num1 == 0){
-         
           result.value = n;
+          
      }else{
          
          result.value += n;
@@ -111,6 +117,7 @@ function operation(){
      }
      num1 = result.value;
      //num1 = parseFloat(n);
+     
      console.log(num1);
     
  }
